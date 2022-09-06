@@ -1,0 +1,32 @@
+.app-navbar {
+    background-color: #002b80;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 25px;
+}
+h1 {
+    color: white;
+}
+
+.navbar-brand img {
+    height: 3em;
+    margin-right: 1em;
+}
+
+.nav {
+    margin-left: auto;
+    margin-right: 3em;
+}
+
+.hover-lined {
+    color: #EEE;
+    font-size: 1.25em;
+    margin-left: 15px;
+}
