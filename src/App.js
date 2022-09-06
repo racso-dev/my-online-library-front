@@ -21,7 +21,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<MainPage />} />
                 <Route path="/categories" element={<CategoriesPage />} />
-                <Route path="/noslivres" element={<OurbooksPage />} />
+                <Route path="/nos-livres" element={<OurbooksPage />} />
                 <Route path="/horaires" element={<HoursPage />} />
                 <Route path="/reglement" element={<RulesPage />} />
                 <Route path="*" element={<NotFoundPage />} />
