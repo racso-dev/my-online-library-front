@@ -1,8 +1,8 @@
-function MainPage() {
+function RulesPage() {
     return (
         <div>
         </div>
     );
 }
 
-export default MainPage;
+export default RulesPage;
