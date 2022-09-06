@@ -5,6 +5,7 @@ import {
 } from 'react-bootstrap';
 
 import './AppBar.css'
+import Pages from '../routes/AppRouter'
 
 const AppBar = () => {
     return (
@@ -15,10 +16,10 @@ const AppBar = () => {
             </Navbar.Brand>
             <Nav className="nav">
                 <Nav.Link className="hover-lined" href="/">Accueil</Nav.Link>
-                <Nav.Link className="hover-lined" href="/categories">Catégories</Nav.Link>
-                <Nav.Link className="hover-lined" href="/nos-livres">Nos Livres</Nav.Link>
-                <Nav.Link className="hover-lined" href="/horaires">Horaires</Nav.Link>
-                <Nav.Link className="hover-lined" href="/reglement">Règlement</Nav.Link>
+                <Nav.Link className="hover-lined" href={Pages.CATEGORIES}>Catégories</Nav.Link>
+                <Nav.Link className="hover-lined" href={Pages.OUR_BOOKS}>Nos Livres</Nav.Link>
+                <Nav.Link className="hover-lined" href={Pages.HOURS}>Horaires</Nav.Link>
+                <Nav.Link className="hover-lined" href={Pages.RULES}>Règlement</Nav.Link>
             </Nav>
         </Navbar>
     );
