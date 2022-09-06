@@ -1,12 +1,11 @@
+import React from 'react';
+import AppRouter from "./routes/AppRouter";
 import './App.css';
-import AppBar from "./components/AppBar";
 
 function App() {
-  return (
-    <div className="App">
-      <AppBar/>
-    </div>
-  );
+    return (
+        <AppRouter/>
+    );
 }
 
 export default App;
