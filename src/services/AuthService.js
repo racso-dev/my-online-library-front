@@ -1,7 +1,7 @@
-import { Axios } from 'axios';
+const axios = require('axios');
 
 export const signIn = async (email, password) => {
-    const response = await Axios.post('/api/users/login', {
+    const response = await axios.post('/api/users/login', {
         email,
         password,
     });
@@ -9,7 +9,7 @@ export const signIn = async (email, password) => {
 }
 
 export const signUp = async (email, password) => {
-    const response = await Axios.post('/api/users/register', {
+    const response = await axios.post('/api/users/register', {
         email,
         password,
     });
