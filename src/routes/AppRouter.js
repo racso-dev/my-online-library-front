@@ -15,14 +15,14 @@ import ConnexionPage from "../pages/Connection";
 import RegisterPage from "../pages/Register";
 
 export const Pages = {
-    MAIN: "/",
+    MAIN: '/',
     CATEGORIES: '/categories',
     OUR_BOOKS: '/nos-livres',
     HOURS: '/horaires',
     RULES: '/reglement',
     CONNECTION: '/connexion',
     REGISTER: '/inscription'
-}
+};
 
 const AppRouter = () => {
     return (
@@ -30,7 +30,7 @@ const AppRouter = () => {
             <AppBar />
             <Routes>
                 <Route path={Pages.MAIN} element={<MainPage />} />
-                <Route path={Pages.CATEGORIES} element={<CategoriesPage />} />
+                <Route path={`${Pages.CATEGORIES}/*`} element={<CategoriesPage />} />
                 <Route path={Pages.OUR_BOOKS} element={<OurbooksPage />} />
                 <Route path={Pages.HOURS} element={<HoursPage />} />
                 <Route path={Pages.RULES} element={<RulesPage />} />
@@ -40,6 +40,6 @@ const AppRouter = () => {
             </Routes>
         </Router>
     );
-}
+};
 
 export default AppRouter;

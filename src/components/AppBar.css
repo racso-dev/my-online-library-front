@@ -11,7 +11,7 @@
     text-decoration: none;
     margin-left: 25px;
 }
-h1 {
+.navbar-brand h1 {
     color: white;
 }
 
