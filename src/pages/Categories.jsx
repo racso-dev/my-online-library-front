@@ -1,4 +1,4 @@
-function CategoriesPage() {
+const CategoriesPage = () => {
     return (
         <div className="App">
         </div>

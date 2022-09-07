@@ -1,7 +1,7 @@
-function RulesPage() {
+const RulesPage = () => {
     return (
         <div>
-        </div>
+        </div >
     );
 }
 
