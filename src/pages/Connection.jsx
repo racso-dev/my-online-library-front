@@ -2,6 +2,7 @@ import './Connection.css';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Pages } from "../routes/AppRouter";
 import { signIn } from '../services/AuthService';
@@ -9,12 +10,13 @@ import { signIn } from '../services/AuthService';
 const ConnexionPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const validate = () => (email.length > 0 && password.length > 0);
     const handler = (event) => {
         event.preventDefault();
         signIn(email, password);
-        window.location.href = Pages.OUR_BOOKS;
+        navigate(Pages.OUR_BOOKS);
     };
     return (
         <div className="connexion">
@@ -34,6 +36,6 @@ const ConnexionPage = () => {
             <a href={Pages.REGISTER}> Pas encore de compte ? Rendez-vous ici !</a>
         </div>
     );
-}
+};
 
 export default ConnexionPage;
