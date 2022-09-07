@@ -5,14 +5,14 @@ import {
 } from 'react-bootstrap';
 
 import './AppBar.css'
-import Pages from '../routes/AppRouter'
+import { Pages } from '../routes/AppRouter'
 
 const AppBar = () => {
     return (
         <Navbar className='app-navbar'>
             <Navbar.Brand href="/">
                 <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="logo" style={{ maxHeight: "3rem" }} />
-                <h1> MyBouqins </h1>
+                <h1> MyBouquins </h1>
             </Navbar.Brand>
             <Nav className="nav">
                 <Nav.Link className="hover-lined" href="/">Accueil</Nav.Link>
