@@ -1,4 +1,4 @@
-function MainPage() {
+const MainPage = () => {
     return (
         <div>
         </div>

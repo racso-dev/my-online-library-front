@@ -1,4 +1,4 @@
-function HoursPage() {
+const HoursPage = () => {
     return (
         <div>
         </div>

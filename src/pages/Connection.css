@@ -1,0 +1,48 @@
+.connexion {
+    width:500px;
+    height:500px;
+    margin:0 auto;
+    position:absolute;
+    left:50%;
+    top:50%;
+    background-color: #002b80;
+    border-radius: 10px;
+    margin-left:-250px;
+    margin-top:-250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.connexion a {
+    margin-top: 1em;
+    color: white;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input {
+    border-radius: 5px;
+    border-color: transparent;
+    width: 20em;
+    font-size: 1.25em;
+}
+
+.form-label {
+    color: white;
+    font-size: 1.5em;
+}
+
+.button {
+    margin-top: 1.5em;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: 1.5em;
+    border-radius: 5px;
+    border-color: transparent;
+}
