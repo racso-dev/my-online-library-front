@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = 'http://localhost:8000';
 
 export const requestApi = async (method, endpoint, body) => {
 
@@ -18,7 +18,7 @@ export const requestApi = async (method, endpoint, body) => {
             headers,
             body: JSON.stringify(body),
         });
-        return res.json();
+        return await res.json();
     } catch (error) {
         console.error(error);
         throw error;
