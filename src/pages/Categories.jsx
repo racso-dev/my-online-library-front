@@ -4,13 +4,12 @@ import BookModal from '../components/BookModal';
 import { getBooks } from '../services/BookService';
 import "./Categories.css";
 
-const CategoriesPage = () => {
+const CategoriesPage = ({ category }) => {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
-            const currentCategory = window.location.pathname.split('/')[2];
-            const data = await getBooks(currentCategory);
+            const data = await getBooks(category);
             setBooks(data);
         };
         fetchData();

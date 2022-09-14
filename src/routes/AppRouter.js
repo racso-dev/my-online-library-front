@@ -14,6 +14,7 @@ import AppBar from "../components/AppBar";
 import ConnexionPage from "../pages/Connection";
 import RegisterPage from "../pages/Register";
 import AdminPage from "../pages/Admin";
+import { BookCategories } from '../pages/Ourbooks';
 
 export const Pages = {
     MAIN: '/',
@@ -32,7 +33,18 @@ const AppRouter = () => {
             <AppBar />
             <Routes>
                 <Route path={Pages.MAIN} element={<MainPage />} />
-                <Route path={`${Pages.CATEGORIES}/*`} element={<CategoriesPage />} />
+                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.LITERATURE}`} element={
+                    <CategoriesPage category={BookCategories.LITERATURE} />
+                } />
+                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.COMICS}`} element={
+                    <CategoriesPage category={BookCategories.COMICS} />
+                } />
+                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.UTILITY}`} element={
+                    <CategoriesPage category={BookCategories.UTILITY} />
+                } />
+                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.CHILDREN}`} element={
+                    <CategoriesPage category={BookCategories.CHILDREN} />
+                } />
                 <Route path={Pages.OUR_BOOKS} element={<OurbooksPage />} />
                 <Route path={Pages.HOURS} element={<HoursPage />} />
                 <Route path={Pages.RULES} element={<RulesPage />} />
