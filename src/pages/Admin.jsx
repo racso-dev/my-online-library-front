@@ -1,25 +1,7 @@
 import { useState, useEffect } from 'react';
 import { requestApi } from '../services/ApiService';
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import './Admin.css';
-
-const mockUsers = [
-    {
-        id: 1,
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'jdoe@gmail.com',
-        activated: true,
-    },
-    {
-        id: 2,
-        firstName: 'Jane',
-        lastName: 'Doe',
-        email: 'jadoea@gmail.com',
-        activated: false,
-    },
-];
 
 // Admin page component allowing to search users by firstName, lastName, email or activation status
 const AdminPage = () => {
@@ -32,9 +14,8 @@ const AdminPage = () => {
 
     const fetchData = async () => {
         setQueries(`firstName=${firstNameFilter}&lastName=${lastNameFilter}&email=${emailFilter}&activated=${activatedFilter}`);
-        // const data = await requestApi('GET', `/users?${queries}`);
-        // setUsers(data);
-        console.log('JE PASSE');
+        const data = await requestApi('GET', `/users?${queries}`);
+        setUsers(data);
     };
 
     const handler = (event) => {
@@ -44,7 +25,6 @@ const AdminPage = () => {
 
     useEffect(() => {
         fetchData();
-        setUsers(mockUsers);
     }, []);
     return (
         <div className='admin'>
