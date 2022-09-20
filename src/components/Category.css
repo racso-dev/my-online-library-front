@@ -7,6 +7,10 @@
     margin-block: 2em;
 }
 
+.category:hover {
+    opacity: 0.8;
+}
+
 .category__name {
     font-size: 2em;
     font-weight: bold;
