@@ -15,6 +15,7 @@ import ConnexionPage from "../pages/Connection";
 import RegisterPage from "../pages/Register";
 import AdminPage from "../pages/Admin";
 import { BookCategories } from '../pages/Ourbooks';
+import ProfilePage from '../pages/Profile';
 
 export const Pages = {
     MAIN: '/',
@@ -25,6 +26,7 @@ export const Pages = {
     CONNECTION: '/connexion',
     REGISTER: '/inscription',
     ADMIN: '/admin',
+    PROFILE: '/profil',
 };
 
 const AppRouter = () => {
@@ -51,6 +53,7 @@ const AppRouter = () => {
                 <Route path={Pages.CONNECTION} element={<ConnexionPage />} />
                 <Route path={Pages.REGISTER} element={<RegisterPage />} />
                 <Route path={Pages.ADMIN} element={<AdminPage />} />
+                <Route path={Pages.PROFILE} element={<ProfilePage />} />
                 <Route path="*" element={<MainPage />} />
             </Routes>
         </Router>
