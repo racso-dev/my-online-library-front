@@ -38,6 +38,21 @@ const ProfilePage = () => {
         validateFirstName() ||
         validateLastName()
     );
+
+    const fetchData = async () => {
+        let data = await UserService.getUser();
+        setEmail(data.login);
+        setFirstName(data.firstName);
+        setLastName(data.lastName);
+        setNewEmail(data.login);
+        setNewFirstName(data.firstName);
+        setNewLastName(data.lastName);
+
+        data = await BorrowService.getBorrowedBooks();
+        setBooks(data);
+
+    };
+
     const handler = async (event) => {
         event.preventDefault();
         await UserService.updateUser(
@@ -48,22 +63,10 @@ const ProfilePage = () => {
                 lastName: newLastName
             }
         );
+        await fetchData();
     };
 
     useEffect(() => {
-        const fetchData = async () => {
-            let data = await UserService.getUser();
-            setEmail(data.login);
-            setFirstName(data.firstName);
-            setLastName(data.lastName);
-            setNewEmail(data.login);
-            setNewFirstName(data.firstName);
-            setNewLastName(data.lastName);
-
-            data = await BorrowService.getBorrowedBooks();
-            setBooks(data);
-
-        };
         fetchData();
     }, []);
 
