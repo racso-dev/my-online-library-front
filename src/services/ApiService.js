@@ -5,6 +5,8 @@ export const requestApi = async (method, endpoint, body) => {
     try {
         const jwt = localStorage.getItem('jwt');
         const url = API_BASE_URL + endpoint;
+        if (process.env.NODE_ENV === 'development')
+            console.log(`[API] Request\nURL=${url}${body ? `\nBODY=${body}\n` : ''}`);
         const headers = jwt ?
             {
                 'Authorization': 'Bearer ' + jwt,
@@ -13,12 +15,15 @@ export const requestApi = async (method, endpoint, body) => {
             {
                 'Content-Type': 'application/json'
             };
-        const res = await fetch(url, {
+        let res = await fetch(url, {
             method,
             headers,
             body: JSON.stringify(body),
         });
-        return await res.json();
+        res = await res.json();
+        if (process.env.NODE_ENV === 'development')
+            console.log('[API] Response\n', res);
+        return res;
     } catch (error) {
         console.error(error);
         throw error;
