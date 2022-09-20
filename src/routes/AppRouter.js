@@ -7,14 +7,13 @@ import {
 
 import MainPage from "../pages";
 import CategoriesPage from '../pages/Categories';
-import OurbooksPage from '../pages/Ourbooks';
+import OurbooksPage, { BookCategories } from '../pages/Ourbooks';
 import HoursPage from '../pages/Hours';
 import RulesPage from '../pages/Rules';
 import AppBar from "../components/AppBar";
 import ConnexionPage from "../pages/Connection";
 import RegisterPage from "../pages/Register";
 import AdminPage from "../pages/Admin";
-import { BookCategories } from '../pages/Ourbooks';
 import ProfilePage from '../pages/Profile';
 
 export const Pages = {
