@@ -6,6 +6,7 @@ export const signIn = async (email, password) => {
         password,
     });
     localStorage.setItem('jwt', response.token);
+    document.location.reload();
 };
 
 export const signUp = async (email, password, firstName, lastName) => {
