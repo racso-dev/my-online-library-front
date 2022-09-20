@@ -1,18 +1,71 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 20fr));
+    grid-gap: 2rem;
+    padding: 3rem;
 }
 
 .grid div {
-    border-radius: 10px;
-    margin-top: 1em;
-    padding: 1em;
+    margin-top: 2em;
     text-align: center;
 }
 
-.grid div img {
+.book:hover {
+    opacity: 0.8;
+}
+
+.cover img {
     width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 15px;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cover {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-info {
+    font-size: 0.9em;
+    flex-direction: column;
+    text-align: center;
+}
+
+.modal-book-info {
+    margin-top: 2em;
+    flex-direction: column;
+    text-align: center;
+}
+
+.modal-book-info h1 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.modal-book-info h2 {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.modal-book-info h3 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+
+.book-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-modal img {
+    width: 50%;
 }
