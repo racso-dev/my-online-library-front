@@ -1,0 +1,48 @@
+.search .form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-inline: 10px;
+    font-size: 1.25em;
+}
+
+.search .form-input {
+    display: flex;
+    font-size: 1em;
+}
+
+.search .form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.users {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-inline: 10px;
+    font-size: 1.25em;
+    margin-top: 1em;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.25em;
+    background-color: #002b80;
+    color: white;
+    margin-block: 10px;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.admin {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-inline: 10px;
+    font-size: 1.25em;
+    padding: 1em;
+}

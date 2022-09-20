@@ -1,0 +1,10 @@
+.hours {
+    padding: 2em;
+    font-size: 1.25em;
+    text-align: justify;
+} 
+
+.hours h1 {
+    color: black;
+    font-size: 2em;
+}

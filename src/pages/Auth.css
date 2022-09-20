@@ -20,24 +20,24 @@
     color: white;
 }
 
-.form {
+.connexion .form {
     display: flex;
     flex-direction: column;
 }
 
-.form-input {
+.connexion .form-input {
     border-radius: 5px;
     border-color: transparent;
     width: 20em;
     font-size: 1.25em;
 }
 
-.form-label {
+.connexion .form-label {
     color: white;
     font-size: 1.5em;
 }
 
-.button {
+.connexion .button {
     margin-top: 1.5em;
     display: flex;
     width: 100%;

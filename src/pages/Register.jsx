@@ -1,4 +1,4 @@
-import './Connection.css';
+import './Auth.css';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
@@ -8,6 +8,8 @@ import { Pages } from "../routes/AppRouter";
 import { signUp } from "../services/AuthService";
 
 const ConnexionPage = () => {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmationPassword, setConfirmationPassword] = useState("");
@@ -23,12 +25,22 @@ const ConnexionPage = () => {
     const validate = () => (validateEmail(email) && email.length > 0 && password.length > 0 && password === confirmationPassword);
     const handler = (event) => {
         event.preventDefault();
-        signUp(email, password);
+        signUp(email, password, firstName, lastName);
         navigate(Pages.OUR_BOOKS);
     };
     return (
         <div className="connexion">
             <Form onSubmit={handler}>
+                <Form.Group className="form" controlId="firstName">
+                    <Form.Label className="form-label">First Name</Form.Label>
+                    <Form.Control className="form-input" type="text" value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)} />
+                </Form.Group>
+                <Form.Group className="form" controlId="lastName">
+                    <Form.Label className="form-label">Last Name</Form.Label>
+                    <Form.Control className="form-input" type="text" value={lastName}
+                        onChange={(e) => setLastName(e.target.value)} />
+                </Form.Group>
                 <Form.Group className="form" controlId="email">
                     <Form.Label className="form-label">Email</Form.Label>
                     <Form.Control className="form-input" type="email" value={email}

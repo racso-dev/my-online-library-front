@@ -18,7 +18,7 @@ export const requestApi = async (method, endpoint, body) => {
             headers,
             body: JSON.stringify(body),
         });
-        return res.json();
+        return await res.json();
     } catch (error) {
         console.error(error);
         throw error;
