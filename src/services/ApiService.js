@@ -6,7 +6,7 @@ export const requestApi = async (method, endpoint, body) => {
         const jwt = localStorage.getItem('jwt');
         const url = API_BASE_URL + endpoint;
         if (process.env.NODE_ENV === 'development')
-            console.log(`[API] Request\nURL=${url}${body ? `\nBODY=${body}\n` : ''}`);
+            console.log(`[API] Request\nURL=${url}${body ? `\nBODY=${JSON.stringify(body)}\n` : ''}`);
         const headers = jwt ?
             {
                 'Authorization': 'Bearer ' + jwt,
@@ -20,7 +20,8 @@ export const requestApi = async (method, endpoint, body) => {
             headers,
             body: JSON.stringify(body),
         });
-        res = await res.json();
+        if (res.status !== 204)
+            res = await res.json();
         if (process.env.NODE_ENV === 'development')
             console.log('[API] Response\n', res);
         return res;
