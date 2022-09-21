@@ -8,18 +8,20 @@ const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState({ token: localStorage.getItem('jwt') });
 
     const setAuthData = (token) => {
-        if (token)
+        if (token) {
             localStorage.setItem('jwt', token);
-        else
+        } else {
             localStorage.removeItem('jwt');
+        }
         setAuth({ token });
     };
 
     const setUserData = (user) => {
-        if (user)
+        if (user) {
             localStorage.setItem('user', JSON.stringify(user));
-        else
+        } else {
             localStorage.removeItem('user');
+        }
         setUser(user);
     };
 

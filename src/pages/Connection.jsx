@@ -21,9 +21,9 @@ const ConnexionPage = () => {
     const handler = async (event) => {
         event.preventDefault();
         const res = await signIn(email, password);
-        if (!res.token)
+        if (!res.token) {
             toast.error(res.message, toastOptions);
-        else {
+        } else {
             setAuthData(res.token);
             const user = await getUser();
             setUserData(user);

@@ -66,10 +66,11 @@ const ProfilePage = () => {
                 lastName: newLastName
             }
         );
-        if (res.status === 204)
+        if (res.status === 204) {
             toast.success("Profil mis à jour avec succès", toastOptions);
-        else
+        } else {
             toast.error("Erreur lors de la mise à jour du profil", toastOptions);
+        }
         await fetchData();
     };
 

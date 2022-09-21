@@ -31,9 +31,9 @@ const RegisterPage = () => {
     const handler = async (event) => {
         event.preventDefault();
         const res = await signUp(email, password, firstName, lastName);
-        if (!res.token)
+        if (!res.token) {
             toast.error(res.message, toastOptions);
-        else {
+        } else {
             setAuthData(res.token);
             const user = await getUser();
             setUserData(user);
