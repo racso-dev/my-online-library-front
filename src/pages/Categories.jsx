@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { getBooks } from '../services/BookService';
-import "./Categories.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { borrowBook } from '../services/BorrowService';
+import { toast } from 'react-toastify';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Categories.css';
+import { toastOptions } from '../App';
 
 const CategoriesPage = ({ category }) => {
     const [books, setBooks] = useState([]);
@@ -15,7 +18,7 @@ const CategoriesPage = ({ category }) => {
             setBooks(data);
         };
         fetchData();
-    }, []);
+    });
 
     return (
         <>
@@ -56,8 +59,16 @@ const CategoriesPage = ({ category }) => {
                         <Button variant="secondary" onClick={() => setShow(false)}>
                             Fermer
                         </Button>
-                        <Button variant="primary" onClick={() => setShow(false)}>
-                            Louer
+                        <Button variant="primary" onClick={async () => {
+                            setShow(false);
+                            const res = await borrowBook(book.id);
+                            if (res.status === 401) {
+                                toast.error("Vous n'êtes pas autorisé à emprunter de livre", toastOptions);
+                            } else {
+                                toast.success("Le livre a été emprunté avec succès", toastOptions);
+                            }
+                        }}>
+                            Emprunter
                         </Button>
                     </Modal.Footer>
                 </Modal>
@@ -65,8 +76,6 @@ const CategoriesPage = ({ category }) => {
                 null
 
             }
-
-
         </>
     );
 };

@@ -15,6 +15,8 @@ import ConnexionPage from "../pages/Connection";
 import RegisterPage from "../pages/Register";
 import AdminPage from "../pages/Admin";
 import ProfilePage from '../pages/Profile';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Pages = {
     MAIN: '/',
@@ -33,7 +35,6 @@ const AppRouter = () => {
         <Router>
             <AppBar />
             <Routes>
-                <Route path={Pages.MAIN} element={<MainPage />} />
                 <Route path={`${Pages.OUR_BOOKS}/${BookCategories.LITERATURE}`} element={
                     <CategoriesPage category={BookCategories.LITERATURE} />
                 } />
@@ -55,6 +56,7 @@ const AppRouter = () => {
                 <Route path={Pages.PROFILE} element={<ProfilePage />} />
                 <Route path="*" element={<MainPage />} />
             </Routes>
+            <ToastContainer />
         </Router>
     );
 };
