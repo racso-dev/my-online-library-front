@@ -9,9 +9,10 @@ import { signIn } from '../services/AuthService';
 import { AuthContext } from '../contexts/AuthContext';
 import { toast } from 'react-toastify';
 import { toastOptions } from '../App';
+import { getUser } from '../services/UserService';
 
 const ConnexionPage = () => {
-    const { setAuthData } = useContext(AuthContext);
+    const { setAuthData, setUserData } = useContext(AuthContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -24,6 +25,8 @@ const ConnexionPage = () => {
             toast.error(res.message, toastOptions);
         else {
             setAuthData(res.token);
+            const user = await getUser();
+            setUserData(user);
             navigate(Pages.OUR_BOOKS);
         }
     };

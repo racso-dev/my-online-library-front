@@ -9,9 +9,10 @@ import { signUp } from "../services/AuthService";
 import { AuthContext } from '../contexts/AuthContext';
 import { toast } from 'react-toastify';
 import { toastOptions } from '../App';
+import { getUser } from '../services/UserService';
 
 const RegisterPage = () => {
-    const { setAuthData } = useContext(AuthContext);
+    const { setAuthData, setUserData } = useContext(AuthContext);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState("");
@@ -34,6 +35,8 @@ const RegisterPage = () => {
             toast.error(res.message, toastOptions);
         else {
             setAuthData(res.token);
+            const user = await getUser();
+            setUserData(user);
             navigate(Pages.OUR_BOOKS);
         }
     };

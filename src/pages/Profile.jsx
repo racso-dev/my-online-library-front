@@ -11,7 +11,7 @@ import "./Profile.css";
 import { toastOptions } from "../App";
 
 const ProfilePage = () => {
-    const { setAuthData } = useContext(AuthContext);
+    const { setAuthData, setUserData } = useContext(AuthContext);
     const [isMenu, setIsMenu] = useState(true);
     const [isProfile, setIsProfile] = useState(false);
     const [isBookList, setIsBookList] = useState(false);
@@ -98,6 +98,7 @@ const ProfilePage = () => {
                         </div>
                         <div className='menu-item disconnect' onClick={() => {
                             setAuthData(null);
+                            setUserData(null);
                             navigate(Pages.MAIN);
                         }}>
                             <h1>Se déconnecter</h1>

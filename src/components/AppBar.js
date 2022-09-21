@@ -10,7 +10,7 @@ import ProfileLogo from '../assets/profile.png';
 import { AuthContext } from '../contexts/AuthContext';
 
 const AppBar = () => {
-    const { auth } = useContext(AuthContext);
+    const { auth, user } = useContext(AuthContext);
 
     return (
         <Navbar className='app-navbar'>
@@ -29,7 +29,13 @@ const AppBar = () => {
                 <Nav.Link className="hover-lined" href={Pages.HOURS}>Horaires</Nav.Link>
                 <Nav.Link className="hover-lined" href={Pages.RULES}>Règlement</Nav.Link>
                 {
-                    auth.token ?
+                    user?.role === 'ADMIN' ?
+                        <Nav.Link className="hover-lined" href={Pages.ADMIN}>Admin</Nav.Link>
+                        :
+                        null
+                }
+                {
+                    auth?.token ?
                         <Nav.Link className='logo' href={Pages.PROFILE}><img className='logo' src={ProfileLogo} alt="profile_logo"></img></Nav.Link>
                         :
                         <Nav.Link className="hover-lined" href={Pages.CONNECTION}>Connexion</Nav.Link>
