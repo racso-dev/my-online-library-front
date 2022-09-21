@@ -17,7 +17,6 @@ const ProfilePage = () => {
     const [isBookList, setIsBookList] = useState(false);
 
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("********");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
 
@@ -61,7 +60,7 @@ const ProfilePage = () => {
         const res = await UserService.updateUser(
             {
                 login: newEmail,
-                ...(password === "********" ? {} : { password }),
+                newPassword,
                 firstName: newFirstName,
                 lastName: newLastName
             }
@@ -130,11 +129,7 @@ const ProfilePage = () => {
                                 </Form.Group>
                                 <Form.Group className="form" controlId="password">
                                     <Form.Label className="form-label">Mot de passe</Form.Label>
-                                    <Form.Control className="form-input" type="password" value={password}
-                                        onChange={(e) => {
-                                            setPassword(e.target.value);
-                                            setNewPassword(e.target.value);
-                                        }} />
+                                    <Form.Control className="form-input" type="password" value={newPassword} placeholder="********" onChange={(e) => setNewPassword(e.target.value)} />
                                 </Form.Group>
                                 <Button className="button" type="submit" disabled={!validate()}> Enregistrer </Button>
                             </Form>
