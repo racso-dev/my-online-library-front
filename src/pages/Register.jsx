@@ -1,13 +1,17 @@
 import './Auth.css';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import { Pages } from "../routes/AppRouter";
 import { signUp } from "../services/AuthService";
+import { AuthContext } from '../contexts/AuthContext';
+import { toast } from 'react-toastify';
+import { toastOptions } from '../App';
 
-const ConnexionPage = () => {
+const RegisterPage = () => {
+    const { setAuthData } = useContext(AuthContext);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState("");
@@ -23,21 +27,26 @@ const ConnexionPage = () => {
             );
     };
     const validate = () => (validateEmail(email) && email.length > 0 && password.length > 0 && password === confirmationPassword);
-    const handler = (event) => {
+    const handler = async (event) => {
         event.preventDefault();
-        signUp(email, password, firstName, lastName);
-        navigate(Pages.OUR_BOOKS);
+        const res = await signUp(email, password, firstName, lastName);
+        if (!res.token)
+            toast.error(res.message, toastOptions);
+        else {
+            setAuthData(res.token);
+            navigate(Pages.OUR_BOOKS);
+        }
     };
     return (
         <div className="connexion">
             <Form onSubmit={handler}>
                 <Form.Group className="form" controlId="firstName">
-                    <Form.Label className="form-label">First Name</Form.Label>
+                    <Form.Label className="form-label">Prénom</Form.Label>
                     <Form.Control className="form-input" type="text" value={firstName}
                         onChange={(e) => setFirstName(e.target.value)} />
                 </Form.Group>
                 <Form.Group className="form" controlId="lastName">
-                    <Form.Label className="form-label">Last Name</Form.Label>
+                    <Form.Label className="form-label">Nom</Form.Label>
                     <Form.Control className="form-input" type="text" value={lastName}
                         onChange={(e) => setLastName(e.target.value)} />
                 </Form.Group>
@@ -63,4 +72,4 @@ const ConnexionPage = () => {
     );
 };
 
-export default ConnexionPage;
+export default RegisterPage;

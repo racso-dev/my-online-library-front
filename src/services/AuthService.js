@@ -5,8 +5,7 @@ export const signIn = async (email, password) => {
         login: email,
         password,
     });
-    localStorage.setItem('jwt', response.token);
-    document.location.reload();
+    return response;
 };
 
 export const signUp = async (email, password, firstName, lastName) => {
@@ -16,9 +15,5 @@ export const signUp = async (email, password, firstName, lastName) => {
         firstName,
         lastName,
     });
-    localStorage.setItem('jwt', response.token);
-};
-
-export const signOut = () => {
-    localStorage.removeItem('jwt');
+    return response;
 };

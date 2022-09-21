@@ -1,14 +1,17 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Pages } from "../routes/AppRouter";
 import * as UserService from '../services/UserService';
 import * as BorrowService from '../services/BorrowService';
-import * as AuthService from '../services/AuthService';
+import { toast } from 'react-toastify';
+import { AuthContext } from "../contexts/AuthContext";
 import "./Profile.css";
+import { toastOptions } from "../App";
 
 const ProfilePage = () => {
+    const { setAuthData } = useContext(AuthContext);
     const [isMenu, setIsMenu] = useState(true);
     const [isProfile, setIsProfile] = useState(false);
     const [isBookList, setIsBookList] = useState(false);
@@ -55,7 +58,7 @@ const ProfilePage = () => {
 
     const handler = async (event) => {
         event.preventDefault();
-        await UserService.updateUser(
+        const res = await UserService.updateUser(
             {
                 login: newEmail,
                 ...(password === "********" ? {} : { password }),
@@ -63,6 +66,10 @@ const ProfilePage = () => {
                 lastName: newLastName
             }
         );
+        if (res.status === 204)
+            toast.success("Profil mis à jour avec succès", toastOptions);
+        else
+            toast.error("Erreur lors de la mise à jour du profil", toastOptions);
         await fetchData();
     };
 
@@ -90,9 +97,8 @@ const ProfilePage = () => {
                             <h1>Mes emprunts</h1>
                         </div>
                         <div className='menu-item disconnect' onClick={() => {
-                            AuthService.signOut();
+                            setAuthData(null);
                             navigate(Pages.MAIN);
-                            document.location.reload();
                         }}>
                             <h1>Se déconnecter</h1>
                         </div>
@@ -113,15 +119,15 @@ const ProfilePage = () => {
                                     <Form.Control className="form-input" type="email" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
                                 </Form.Group>
                                 <Form.Group className="form" controlId="firstName">
-                                    <Form.Label className="form-label">First Name</Form.Label>
+                                    <Form.Label className="form-label">Prénom</Form.Label>
                                     <Form.Control className="form-input" type="text" value={newFirstName} onChange={(e) => setNewFirstName(e.target.value)} />
                                 </Form.Group>
                                 <Form.Group className="form" controlId="lastName">
-                                    <Form.Label className="form-label">Last Name</Form.Label>
+                                    <Form.Label className="form-label">Nom</Form.Label>
                                     <Form.Control className="form-input" type="text" value={newLastName} onChange={(e) => setNewLastName(e.target.value)} />
                                 </Form.Group>
                                 <Form.Group className="form" controlId="password">
-                                    <Form.Label className="form-label">Password</Form.Label>
+                                    <Form.Label className="form-label">Mot de passe</Form.Label>
                                     <Form.Control className="form-input" type="password" value={password}
                                         onChange={(e) => {
                                             setPassword(e.target.value);
