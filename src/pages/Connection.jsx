@@ -10,6 +10,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import { toast } from 'react-toastify';
 import { toastOptions } from '../App';
 import { getUser } from '../services/UserService';
+import FormItem from '../components/FormItem';
 
 const ConnexionPage = () => {
     const { setAuthData, setUserData } = useContext(AuthContext);
@@ -33,16 +34,8 @@ const ConnexionPage = () => {
     return (
         <div className="connexion">
             <Form onSubmit={handler}>
-                <Form.Group className="form" controlId="email">
-                    <Form.Label className="form-label">Email</Form.Label>
-                    <Form.Control className="form-input" type="email" value={email}
-                        onChange={(e) => setEmail(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="password">
-                    <Form.Label className="form-label">Mot de passe</Form.Label>
-                    <Form.Control className="form-input" type="password" value={password}
-                        onChange={(e) => setPassword(e.target.value)} />
-                </Form.Group>
+                <FormItem label="Email" value={email} onChange={(e) => setEmail(e.target.value)} controlId='password' type='email' />
+                <FormItem label="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} controlId='password' type='password' />
                 <Button className="button" type="submit" disabled={!validate()}> Connexion </Button>
             </Form>
             <a href={Pages.REGISTER}> Pas encore de compte ? Rendez-vous ici !</a>

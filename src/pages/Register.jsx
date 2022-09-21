@@ -10,6 +10,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import { toast } from 'react-toastify';
 import { toastOptions } from '../App';
 import { getUser } from '../services/UserService';
+import FormItem from '../components/FormItem';
 
 const RegisterPage = () => {
     const { setAuthData, setUserData } = useContext(AuthContext);
@@ -43,31 +44,11 @@ const RegisterPage = () => {
     return (
         <div className="connexion">
             <Form onSubmit={handler}>
-                <Form.Group className="form" controlId="firstName">
-                    <Form.Label className="form-label">Prénom</Form.Label>
-                    <Form.Control className="form-input" type="text" value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="lastName">
-                    <Form.Label className="form-label">Nom</Form.Label>
-                    <Form.Control className="form-input" type="text" value={lastName}
-                        onChange={(e) => setLastName(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="email">
-                    <Form.Label className="form-label">Email</Form.Label>
-                    <Form.Control className="form-input" type="email" value={email}
-                        onChange={(e) => setEmail(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="password">
-                    <Form.Label className="form-label">Mot de passe</Form.Label>
-                    <Form.Control className="form-input" type="password" value={password}
-                        onChange={(e) => setPassword(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="confirmationPassword">
-                    <Form.Label className="form-label">Mot de passe confirmation</Form.Label>
-                    <Form.Control className="form-input" type="password" value={confirmationPassword}
-                        onChange={(e) => setConfirmationPassword(e.target.value)} />
-                </Form.Group>
+                <FormItem label="Email" value={email} onChange={(e) => setEmail(e.target.value)} controlId='email' type='email' />
+                <FormItem label="Nom" value={lastName} onChange={(e) => setLastName(e.target.value)} controlId='lastName' />
+                <FormItem label="Prénom" value={firstName} onChange={(e) => setFirstName(e.target.value)} controlId='firstName' />
+                <FormItem label="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} controlId='password' type='password' />
+                <FormItem label="Mot de passe confirmation" value={confirmationPassword} onChange={(e) => setConfirmationPassword(e.target.value)} controlId='confirmationPassword' type='password' />
                 <Button className="button" type="submit" disabled={!validate()}> Inscription </Button>
             </Form>
             <a href={Pages.CONNECTION}> Déjà un compte ? Connecte-toi ici !</a>

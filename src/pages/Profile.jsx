@@ -1,6 +1,7 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
+import FormItem from '../components/FormItem';
 import * as UserService from '../services/UserService';
 import { toast } from 'react-toastify';
 import { toastOptions } from "../App";
@@ -64,22 +65,10 @@ const ProfilePage = () => {
     return (
         <div className="connexion">
             <Form onSubmit={handler}>
-                <Form.Group className="form" controlId="email">
-                    <Form.Label className="form-label">Email</Form.Label>
-                    <Form.Control className="form-input" type="email" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="firstName">
-                    <Form.Label className="form-label">Prénom</Form.Label>
-                    <Form.Control className="form-input" type="text" value={newFirstName} onChange={(e) => setNewFirstName(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="lastName">
-                    <Form.Label className="form-label">Nom</Form.Label>
-                    <Form.Control className="form-input" type="text" value={newLastName} onChange={(e) => setNewLastName(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="password">
-                    <Form.Label className="form-label">Mot de passe</Form.Label>
-                    <Form.Control className="form-input" type="password" value={newPassword} placeholder="********" onChange={(e) => setNewPassword(e.target.value)} />
-                </Form.Group>
+                <FormItem label="Email" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} controlId='email' type='email' />
+                <FormItem label="Nom" value={newLastName} onChange={(e) => setNewLastName(e.target.value)} controlId='lastName' />
+                <FormItem label="Prénom" value={newFirstName} onChange={(e) => setNewFirstName(e.target.value)} controlId='firstName' />
+                <FormItem label="Mot de passe" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} controlId='password' placeHolder='********' type='password' />
                 <Button className="button" type="submit" disabled={!validate()}> Enregistrer </Button>
             </Form>
         </div>
