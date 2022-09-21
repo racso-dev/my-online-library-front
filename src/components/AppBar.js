@@ -36,7 +36,7 @@ const AppBar = () => {
                 }
                 {
                     auth?.token ?
-                        <Nav.Link className='logo' href={Pages.PROFILE}><img className='logo' src={ProfileLogo} alt="profile_logo"></img></Nav.Link>
+                        <Nav.Link className='logo' href={Pages.MY_ACCOUNT}><img className='logo' src={ProfileLogo} alt="profile_logo"></img></Nav.Link>
                         :
                         <Nav.Link className="hover-lined" href={Pages.CONNECTION}>Connexion</Nav.Link>
                 }

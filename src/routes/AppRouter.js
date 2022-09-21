@@ -19,6 +19,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PrivateRoute from '../components/PrivateRoute';
 import AdminRoute from '../components/AdminRoute';
+import MyAccount from '../pages/MyAccount';
+import MyBooks from '../pages/MyBooks';
 
 export const Pages = {
     MAIN: '/',
@@ -29,7 +31,9 @@ export const Pages = {
     CONNECTION: '/connexion',
     REGISTER: '/inscription',
     ADMIN: '/admin',
+    MY_ACCOUNT: '/mon-compte',
     PROFILE: '/profil',
+    MY_BOOKS: '/mes-livres',
 };
 
 const AppRouter = () => {
@@ -65,9 +69,19 @@ const AppRouter = () => {
                         <OurbooksPage />
                     </PrivateRoute>
                 } />
+                <Route path={Pages.MY_ACCOUNT} element={
+                    <PrivateRoute>
+                        <MyAccount />
+                    </PrivateRoute>
+                } />
                 <Route path={Pages.PROFILE} element={
                     <PrivateRoute>
                         <ProfilePage />
+                    </PrivateRoute>
+                } />
+                <Route path={Pages.MY_BOOKS} element={
+                    <PrivateRoute>
+                        <MyBooks />
                     </PrivateRoute>
                 } />
                 <Route path={Pages.ADMIN} element={
