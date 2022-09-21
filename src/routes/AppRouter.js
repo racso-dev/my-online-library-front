@@ -7,7 +7,7 @@ import {
 
 import MainPage from "../pages";
 import CategoriesPage from '../pages/Categories';
-import OurbooksPage, { BookCategories } from '../pages/Ourbooks';
+import OurbooksPage, { BOOK_CATEGORIES } from '../pages/Ourbooks';
 import HoursPage from '../pages/Hours';
 import RulesPage from '../pages/Rules';
 import AppBar from "../components/AppBar";
@@ -37,26 +37,26 @@ const AppRouter = () => {
         <Router>
             <AppBar />
             <Routes>
-                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.LITERATURE}`} element={
+                <Route path={`${Pages.OUR_BOOKS}/${BOOK_CATEGORIES.LITERATURE.SLUG}`} element={
                     <PrivateRoute>
-                        <CategoriesPage category={BookCategories.LITERATURE} />
+                        <CategoriesPage category={BOOK_CATEGORIES.LITERATURE.SLUG} />
                     </PrivateRoute>
                 } />
-                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.COMICS}`} element={
+                <Route path={`${Pages.OUR_BOOKS}/${BOOK_CATEGORIES.COMICS.SLUG}`} element={
                     <PrivateRoute>
-                        <CategoriesPage category={BookCategories.COMICS} />
-                    </PrivateRoute>
-
-                } />
-                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.UTILITY}`} element={
-                    <PrivateRoute>
-                        <CategoriesPage category={BookCategories.UTILITY} />
+                        <CategoriesPage category={BOOK_CATEGORIES.COMICS.SLUG} />
                     </PrivateRoute>
 
                 } />
-                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.CHILDREN}`} element={
+                <Route path={`${Pages.OUR_BOOKS}/${BOOK_CATEGORIES.UTILITY.SLUG}`} element={
                     <PrivateRoute>
-                        <CategoriesPage category={BookCategories.CHILDREN} />
+                        <CategoriesPage category={BOOK_CATEGORIES.UTILITY.SLUG} />
+                    </PrivateRoute>
+
+                } />
+                <Route path={`${Pages.OUR_BOOKS}/${BOOK_CATEGORIES.CHILDREN.SLUG}`} element={
+                    <PrivateRoute>
+                        <CategoriesPage category={BOOK_CATEGORIES.CHILDREN.SLUG} />
                     </PrivateRoute>
 
                 } />

@@ -1,13 +1,8 @@
 import { requestApi } from './ApiService';
-
-const english = {
-    "litterature": "literature",
-    "bande-dessinee": "comics",
-    "utilitaire": "utility",
-    "livre-pour-enfant": "children",
-};
+import { BOOK_CATEGORIES } from '../pages/Ourbooks';
 
 export const getBooks = async (category) => {
-    const response = await requestApi('GET', `/book?category=${english[category]}`);
+    const endpoint = Object.values(BOOK_CATEGORIES).find((c) => c.SLUG === category)?.ENDPOINT;
+    const response = await requestApi('GET', `/book?category=${endpoint}`);
     return response;
 };
