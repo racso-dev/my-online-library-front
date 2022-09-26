@@ -7,14 +7,20 @@ import {
 
 import MainPage from "../pages";
 import CategoriesPage from '../pages/Categories';
-import OurbooksPage from '../pages/Ourbooks';
+import OurbooksPage, { BOOK_CATEGORIES } from '../pages/Ourbooks';
 import HoursPage from '../pages/Hours';
 import RulesPage from '../pages/Rules';
 import AppBar from "../components/AppBar";
 import ConnexionPage from "../pages/Connection";
 import RegisterPage from "../pages/Register";
 import AdminPage from "../pages/Admin";
-import { BookCategories } from '../pages/Ourbooks';
+import ProfilePage from '../pages/Profile';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import PrivateRoute from '../components/PrivateRoute';
+import AdminRoute from '../components/AdminRoute';
+import MyAccount from '../pages/MyAccount';
+import MyBooks from '../pages/MyBooks';
 
 export const Pages = {
     MAIN: '/',
@@ -25,6 +31,9 @@ export const Pages = {
     CONNECTION: '/connexion',
     REGISTER: '/inscription',
     ADMIN: '/admin',
+    MY_ACCOUNT: '/mon-compte',
+    PROFILE: '/profil',
+    MY_BOOKS: '/mes-livres',
 };
 
 const AppRouter = () => {
@@ -32,27 +41,61 @@ const AppRouter = () => {
         <Router>
             <AppBar />
             <Routes>
-                <Route path={Pages.MAIN} element={<MainPage />} />
-                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.LITERATURE}`} element={
-                    <CategoriesPage category={BookCategories.LITERATURE} />
+                <Route path={`${Pages.OUR_BOOKS}/${BOOK_CATEGORIES.LITERATURE.SLUG}`} element={
+                    <PrivateRoute>
+                        <CategoriesPage category={BOOK_CATEGORIES.LITERATURE.SLUG} />
+                    </PrivateRoute>
                 } />
-                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.COMICS}`} element={
-                    <CategoriesPage category={BookCategories.COMICS} />
+                <Route path={`${Pages.OUR_BOOKS}/${BOOK_CATEGORIES.COMICS.SLUG}`} element={
+                    <PrivateRoute>
+                        <CategoriesPage category={BOOK_CATEGORIES.COMICS.SLUG} />
+                    </PrivateRoute>
+
                 } />
-                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.UTILITY}`} element={
-                    <CategoriesPage category={BookCategories.UTILITY} />
+                <Route path={`${Pages.OUR_BOOKS}/${BOOK_CATEGORIES.UTILITY.SLUG}`} element={
+                    <PrivateRoute>
+                        <CategoriesPage category={BOOK_CATEGORIES.UTILITY.SLUG} />
+                    </PrivateRoute>
+
                 } />
-                <Route path={`${Pages.OUR_BOOKS}/${BookCategories.CHILDREN}`} element={
-                    <CategoriesPage category={BookCategories.CHILDREN} />
+                <Route path={`${Pages.OUR_BOOKS}/${BOOK_CATEGORIES.CHILDREN.SLUG}`} element={
+                    <PrivateRoute>
+                        <CategoriesPage category={BOOK_CATEGORIES.CHILDREN.SLUG} />
+                    </PrivateRoute>
+
                 } />
-                <Route path={Pages.OUR_BOOKS} element={<OurbooksPage />} />
-                <Route path={Pages.HOURS} element={<HoursPage />} />
-                <Route path={Pages.RULES} element={<RulesPage />} />
+                <Route path={Pages.OUR_BOOKS} element={
+                    <PrivateRoute>
+                        <OurbooksPage />
+                    </PrivateRoute>
+                } />
+                <Route path={Pages.MY_ACCOUNT} element={
+                    <PrivateRoute>
+                        <MyAccount />
+                    </PrivateRoute>
+                } />
+                <Route path={Pages.PROFILE} element={
+                    <PrivateRoute>
+                        <ProfilePage />
+                    </PrivateRoute>
+                } />
+                <Route path={Pages.MY_BOOKS} element={
+                    <PrivateRoute>
+                        <MyBooks />
+                    </PrivateRoute>
+                } />
+                <Route path={Pages.ADMIN} element={
+                    <AdminRoute>
+                        <AdminPage />
+                    </AdminRoute>
+                } />
                 <Route path={Pages.CONNECTION} element={<ConnexionPage />} />
                 <Route path={Pages.REGISTER} element={<RegisterPage />} />
-                <Route path={Pages.ADMIN} element={<AdminPage />} />
+                <Route path={Pages.HOURS} element={<HoursPage />} />
+                <Route path={Pages.RULES} element={<RulesPage />} />
                 <Route path="*" element={<MainPage />} />
             </Routes>
+            <ToastContainer />
         </Router>
     );
 };

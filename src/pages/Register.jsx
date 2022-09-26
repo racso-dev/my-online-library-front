@@ -1,13 +1,19 @@
 import './Auth.css';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import { Pages } from "../routes/AppRouter";
 import { signUp } from "../services/AuthService";
+import { AuthContext } from '../contexts/AuthContext';
+import { toast } from 'react-toastify';
+import { toastOptions } from '../App';
+import { getUser } from '../services/UserService';
+import FormItem from '../components/FormItem';
 
-const ConnexionPage = () => {
+const RegisterPage = () => {
+    const { setAuthData, setUserData } = useContext(AuthContext);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState("");
@@ -23,39 +29,26 @@ const ConnexionPage = () => {
             );
     };
     const validate = () => (validateEmail(email) && email.length > 0 && password.length > 0 && password === confirmationPassword);
-    const handler = (event) => {
+    const handler = async (event) => {
         event.preventDefault();
-        signUp(email, password, firstName, lastName);
-        navigate(Pages.OUR_BOOKS);
+        const res = await signUp(email, password, firstName, lastName);
+        if (!res.token) {
+            toast.error(res.message, toastOptions);
+        } else {
+            setAuthData(res.token);
+            const user = await getUser();
+            setUserData(user);
+            navigate(Pages.OUR_BOOKS);
+        }
     };
     return (
         <div className="connexion">
             <Form onSubmit={handler}>
-                <Form.Group className="form" controlId="firstName">
-                    <Form.Label className="form-label">First Name</Form.Label>
-                    <Form.Control className="form-input" type="text" value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="lastName">
-                    <Form.Label className="form-label">Last Name</Form.Label>
-                    <Form.Control className="form-input" type="text" value={lastName}
-                        onChange={(e) => setLastName(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="email">
-                    <Form.Label className="form-label">Email</Form.Label>
-                    <Form.Control className="form-input" type="email" value={email}
-                        onChange={(e) => setEmail(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="password">
-                    <Form.Label className="form-label">Mot de passe</Form.Label>
-                    <Form.Control className="form-input" type="password" value={password}
-                        onChange={(e) => setPassword(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="form" controlId="confirmationPassword">
-                    <Form.Label className="form-label">Mot de passe confirmation</Form.Label>
-                    <Form.Control className="form-input" type="password" value={confirmationPassword}
-                        onChange={(e) => setConfirmationPassword(e.target.value)} />
-                </Form.Group>
+                <FormItem label="Email" value={email} onChange={(e) => setEmail(e.target.value)} controlId='email' type='email' />
+                <FormItem label="Nom" value={lastName} onChange={(e) => setLastName(e.target.value)} controlId='lastName' />
+                <FormItem label="Prénom" value={firstName} onChange={(e) => setFirstName(e.target.value)} controlId='firstName' />
+                <FormItem label="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} controlId='password' type='password' />
+                <FormItem label="Mot de passe confirmation" value={confirmationPassword} onChange={(e) => setConfirmationPassword(e.target.value)} controlId='confirmationPassword' type='password' />
                 <Button className="button" type="submit" disabled={!validate()}> Inscription </Button>
             </Form>
             <a href={Pages.CONNECTION}> Déjà un compte ? Connecte-toi ici !</a>
@@ -63,4 +56,4 @@ const ConnexionPage = () => {
     );
 };
 
-export default ConnexionPage;
+export default RegisterPage;

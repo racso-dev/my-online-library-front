@@ -1,14 +1,14 @@
 .connexion {
-    width:500px;
-    height:500px;
+    width:800px;
+    height:800px;
     margin:0 auto;
     position:absolute;
     left:50%;
     top:50%;
     background-color: #002b80;
     border-radius: 10px;
-    margin-left:-250px;
-    margin-top:-250px;
+    margin-left:-400px;
+    margin-top:-400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,11 +30,14 @@
     border-color: transparent;
     width: 20em;
     font-size: 1.25em;
+    padding: 0.3em;
 }
 
 .connexion .form-label {
     color: white;
     font-size: 1.5em;
+    margin-bottom: 0.2em;
+    margin-top: 0.5em;
 }
 
 .connexion .button {
@@ -45,4 +48,5 @@
     font-size: 1.5em;
     border-radius: 5px;
     border-color: transparent;
+    padding: 0.3em;
 }
