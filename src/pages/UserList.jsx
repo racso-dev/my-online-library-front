@@ -4,10 +4,10 @@ import Form from "react-bootstrap/Form";
 import { toast } from 'react-toastify';
 import { toastOptions } from "../App";
 import { requestApi } from '../services/ApiService';
-import './Admin.css';
+import './UserList.css';
 import { switchUserActivation } from '../services/UserService';
 
-const AdminPage = () => {
+const UserListPage = () => {
     const [users, setUsers] = useState([]);
     const [firstNameFilter, setFirstNameFilter] = useState('');
     const [lastNameFilter, setLastNameFilter] = useState('');
@@ -55,7 +55,7 @@ const AdminPage = () => {
         });
     }, []);
     return (
-        <div className='admin'>
+        <div className='user-list'>
             <div className="search">
                 <Form className="form-container" onSubmit={handler}>
                     <Form.Group className="form" controlId="firstName">
@@ -167,4 +167,4 @@ const AdminPage = () => {
     );
 };
 
-export default AdminPage;
+export default UserListPage;

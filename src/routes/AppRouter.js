@@ -13,7 +13,7 @@ import RulesPage from '../pages/Rules';
 import AppBar from "../components/AppBar";
 import ConnexionPage from "../pages/Connection";
 import RegisterPage from "../pages/Register";
-import AdminPage from "../pages/Admin";
+import UserListPage from "../pages/UserList";
 import ProfilePage from '../pages/Profile';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -30,7 +30,7 @@ export const Pages = {
     RULES: '/reglement',
     CONNECTION: '/connexion',
     REGISTER: '/inscription',
-    ADMIN: '/admin',
+    ADMIN: '/user-list',
     MY_ACCOUNT: '/mon-compte',
     PROFILE: '/profil',
     MY_BOOKS: '/mes-livres',
@@ -86,7 +86,7 @@ const AppRouter = () => {
                 } />
                 <Route path={Pages.ADMIN} element={
                     <AdminRoute>
-                        <AdminPage />
+                        <UserListPage />
                     </AdminRoute>
                 } />
                 <Route path={Pages.CONNECTION} element={<ConnexionPage />} />

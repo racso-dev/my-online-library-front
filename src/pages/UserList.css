@@ -42,7 +42,7 @@
     opacity: 0.8;
 }
 
-.admin {
+.user-list {
     display: flex;
     flex-direction: column;
     flex: 1;
