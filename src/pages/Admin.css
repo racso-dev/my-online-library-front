@@ -38,6 +38,10 @@
     border-radius: 15px;
 }
 
+.user:hover {
+    opacity: 0.8;
+}
+
 .admin {
     display: flex;
     flex-direction: column;
@@ -45,4 +49,19 @@
     margin-inline: 10px;
     font-size: 1.25em;
     padding: 1em;
+}
+
+.modal-user-info {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    margin-inline: 10px;
+    font-size: 1.25em;
+    padding: 1em;
+    justify-content: space-between;
+}
+
+.modal-user-info-label {
+    font-weight: bold;
+    font-size: 1.25em;
 }
