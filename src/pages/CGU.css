@@ -1,0 +1,11 @@
+.cgu {
+    padding: 2em;
+    font-size: 1.25em;
+    text-align: justify;
+    white-space: pre-wrap;
+}
+
+.cgu h1 {
+    color: black;
+    font-size: 2em;
+}

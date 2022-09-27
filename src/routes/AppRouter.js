@@ -3,26 +3,29 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import MainPage from "../pages";
 import CategoriesPage from '../pages/Categories';
+
 import OurbooksPage, { BOOK_CATEGORIES } from '../pages/Ourbooks';
 import HoursPage from '../pages/Hours';
 import RulesPage from '../pages/Rules';
-import AppBar from "../components/AppBar";
 import ConnexionPage from "../pages/Connection";
 import RegisterPage from "../pages/Register";
 import UserListPage from "../pages/UserList";
 import ProfilePage from '../pages/Profile';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import PrivateRoute from '../components/PrivateRoute';
-import AdminRoute from '../components/AdminRoute';
 import MyAccount from '../pages/MyAccount';
 import MyBooks from '../pages/MyBooks';
 import AdminDashboard from '../pages/AdminDashboard';
 import TextDashboard from '../pages/TextDashboard';
+
+import AppBar from "../components/AppBar";
+import PrivateRoute from '../components/PrivateRoute';
+import AdminRoute from '../components/AdminRoute';
+import Footer from "../components/Footer";
+import CguPage from '../pages/CGU';
 
 export const Pages = {
     MAIN: '/',
@@ -38,6 +41,7 @@ export const Pages = {
     MY_BOOKS: '/mes-livres',
     ADMIN_DASHBOARD: '/admin-dashboard',
     TEXT_DASHBOARD: '/text-dashboard',
+    CGU: '/cgu',
 };
 
 const AppRouter = () => {
@@ -103,12 +107,14 @@ const AppRouter = () => {
                         <TextDashboard />
                     </AdminRoute>
                 } />
+                <Route path={Pages.CGU} element={<CguPage />} />
                 <Route path={Pages.CONNECTION} element={<ConnexionPage />} />
                 <Route path={Pages.REGISTER} element={<RegisterPage />} />
                 <Route path={Pages.HOURS} element={<HoursPage />} />
                 <Route path={Pages.RULES} element={<RulesPage />} />
                 <Route path="*" element={<MainPage />} />
             </Routes>
+            <Footer />
             <ToastContainer />
         </Router>
     );

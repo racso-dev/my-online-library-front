@@ -1,6 +1,8 @@
+import './CGU.css';
+
 const CguPage = () => {
     return (
-        <div>
+        <div className='cgu'>
             <h1>CGU</h1>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non nisl id dolor
