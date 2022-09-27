@@ -21,6 +21,8 @@ import PrivateRoute from '../components/PrivateRoute';
 import AdminRoute from '../components/AdminRoute';
 import MyAccount from '../pages/MyAccount';
 import MyBooks from '../pages/MyBooks';
+import AdminDashboard from '../pages/AdminDashboard';
+import TextDashboard from '../pages/TextDashboard';
 
 export const Pages = {
     MAIN: '/',
@@ -30,10 +32,12 @@ export const Pages = {
     RULES: '/reglement',
     CONNECTION: '/connexion',
     REGISTER: '/inscription',
-    ADMIN: '/user-list',
+    USER_LIST: '/user-list',
     MY_ACCOUNT: '/mon-compte',
     PROFILE: '/profil',
     MY_BOOKS: '/mes-livres',
+    ADMIN_DASHBOARD: '/admin-dashboard',
+    TEXT_DASHBOARD: '/text-dashboard',
 };
 
 const AppRouter = () => {
@@ -84,9 +88,19 @@ const AppRouter = () => {
                         <MyBooks />
                     </PrivateRoute>
                 } />
-                <Route path={Pages.ADMIN} element={
+                <Route path={Pages.ADMIN_DASHBOARD} element={
+                    <AdminRoute>
+                        <AdminDashboard />
+                    </AdminRoute>
+                } />
+                <Route path={Pages.USER_LIST} element={
                     <AdminRoute>
                         <UserListPage />
+                    </AdminRoute>
+                } />
+                <Route path={Pages.TEXT_DASHBOARD} element={
+                    <AdminRoute>
+                        <TextDashboard />
                     </AdminRoute>
                 } />
                 <Route path={Pages.CONNECTION} element={<ConnexionPage />} />
