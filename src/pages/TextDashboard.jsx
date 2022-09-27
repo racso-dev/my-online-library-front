@@ -86,8 +86,8 @@ const TextDashboard = () => {
                 <TextareaAutosize className='text-input' onChange={(e) => setNewRulesText(e.target.value)} value={newRulesText} />
             </div>
             <div className='button-container'>
-                <Button className='button' variant='secondary' onClick={() => navigate(Pages.ADMIN_DASHBOARD)}>Retour</Button>
-                <Button className='button' variant='primary' onClick={handler} disabled={!validate()}>Enregistrer</Button>
+                <Button className='interraction-button' variant='secondary' onClick={() => navigate(Pages.ADMIN_DASHBOARD)}>Retour</Button>
+                <Button className='interraction-button' variant='primary' onClick={handler} disabled={!validate()}>Enregistrer</Button>
             </div>
         </div>
     );

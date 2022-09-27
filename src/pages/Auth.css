@@ -1,18 +1,12 @@
 .connexion {
-    width:800px;
-    height:800px;
-    margin:0 auto;
-    position:absolute;
-    left:50%;
-    top:50%;
     background-color: #002b80;
     border-radius: 10px;
-    margin-left:-400px;
-    margin-top:-400px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 15em;
+    padding: 2em;
 }
 
 .connexion a {
