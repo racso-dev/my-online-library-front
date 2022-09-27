@@ -23,7 +23,8 @@ export const requestApi = async (method, endpoint, body) => {
         });
         if (res.status !== 204) {
             res = await res.json();
-        } if (process.env.NODE_ENV === 'development') {
+        }
+        if (process.env.NODE_ENV === 'development') {
             console.log('[API] Response\n', res);
         }
         return res;
