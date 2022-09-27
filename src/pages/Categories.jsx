@@ -6,11 +6,13 @@ import { toast } from 'react-toastify';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Categories.css';
 import { toastOptions } from '../App';
+import Loader from '../components/Loader';
 
 const CategoriesPage = ({ category }) => {
     const [books, setBooks] = useState([]);
     const [show, setShow] = useState(false);
     const [book, setBook] = useState({});
+    const [loading, setLoading] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = (book) => {
@@ -29,11 +31,15 @@ const CategoriesPage = ({ category }) => {
     };
 
     useEffect(() => {
+        setLoading(true);
         const fetchData = async () => {
             const data = await getBooks(category);
             setBooks(data);
         };
-        fetchData();
+        setTimeout(() => {
+            fetchData();
+            setLoading(false);
+        }, 1000);
     }, [category]);
 
     return (
@@ -77,6 +83,12 @@ const CategoriesPage = ({ category }) => {
                             </Button>
                         </Modal.Footer>
                     </Modal>
+                    :
+                    null
+            }
+            {
+                loading ?
+                    <Loader visible={loading} />
                     :
                     null
             }
