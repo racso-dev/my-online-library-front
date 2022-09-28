@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getBorrowedBooks } from '../services/BorrowService';
+import Loader from '../components/Loader';
 import './MyBooks.css';
 
 const MyBooks = () => {
     const [books, setBooks] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const fetchData = async () => {
         const data = await getBorrowedBooks();
@@ -11,7 +13,11 @@ const MyBooks = () => {
     };
 
     useEffect(() => {
+        setLoading(true);
         fetchData();
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
     }, []);
 
     return (
@@ -34,9 +40,21 @@ const MyBooks = () => {
                         }
                     </div>
                     :
-                    <div className='centered-message'>
-                        <h1>Vous n'avez pas d'emprunts en cours !</h1>
+                    loading ?
+                        null
+                        :
+                        <div className='centered-message'>
+                            <h1>Vous n'avez pas d'emprunts en cours !</h1>
+                        </div>
+
+            }
+            {
+                loading ?
+                    <div className='spinner-container-centered'>
+                        <Loader visible={loading} />
                     </div>
+                    :
+                    null
             }
         </div>
     );
