@@ -28,7 +28,9 @@ const RegisterPage = () => {
                 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             );
     };
-    const validate = () => (validateEmail(email) && email.length > 0 && password.length > 0 && password === confirmationPassword);
+    const validatePassword = () => (password.length >= 8 && password.length <= 15 && password.match(/[a-z]/) && password.match(/[A-Z]/) && password.match(/[0-9]/) && password.match(/[^a-zA-Z\d]/) && password === confirmationPassword);
+    const validate = () => (validateEmail(email) && email.length > 0 && password.length > 0 && validatePassword());
+
     const handler = async (event) => {
         event.preventDefault();
         const res = await signUp(email, password, firstName, lastName);
