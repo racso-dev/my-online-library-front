@@ -63,7 +63,7 @@ const ProfilePage = () => {
     }, []);
 
     return (
-        <div className="connexion">
+        <div className="profile">
             <Form onSubmit={handler}>
                 <FormItem label="Email" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} controlId='email' type='email' />
                 <FormItem label="Nom" value={newLastName} onChange={(e) => setNewLastName(e.target.value)} controlId='lastName' />

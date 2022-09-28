@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getRulesPageText } from "../services/TextService";
+import { getPageText } from "../services/TextService";
 import "./Hours.css";
 
 const HoursPage = () => {
@@ -7,7 +7,7 @@ const HoursPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getRulesPageText();
+            const data = await getPageText('HOURS');
             setText(data);
         };
         fetchData();

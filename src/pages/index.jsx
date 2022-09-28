@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMainPageText } from "../services/TextService";
+import { getPageText } from "../services/TextService";
 import "./index.css";
 
 const MainPage = () => {
@@ -7,7 +7,7 @@ const MainPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getMainPageText();
+            const data = await getPageText('HOME');
             setText(data);
         };
         fetchData();

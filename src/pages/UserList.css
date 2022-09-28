@@ -38,11 +38,30 @@
     border-radius: 15px;
 }
 
-.admin {
+.user:hover {
+    opacity: 0.8;
+}
+
+.user-list {
     display: flex;
     flex-direction: column;
     flex: 1;
     margin-inline: 10px;
     font-size: 1.25em;
     padding: 1em;
+}
+
+.modal-user-info {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    margin-inline: 10px;
+    font-size: 1.25em;
+    padding: 1em;
+    justify-content: space-between;
+}
+
+.modal-user-info-label {
+    font-weight: bold;
+    font-size: 1.25em;
 }

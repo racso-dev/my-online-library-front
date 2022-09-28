@@ -30,7 +30,7 @@ const AppBar = () => {
                 <Nav.Link className="hover-lined" href={Pages.RULES}>Règlement</Nav.Link>
                 {
                     user?.role === 'ADMIN' ?
-                        <Nav.Link className="hover-lined" href={Pages.ADMIN}>Admin</Nav.Link>
+                        <Nav.Link className="hover-lined" href={Pages.ADMIN_DASHBOARD}>Admin</Nav.Link>
                         :
                         null
                 }

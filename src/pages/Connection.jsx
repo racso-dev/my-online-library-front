@@ -34,7 +34,7 @@ const ConnexionPage = () => {
     return (
         <div className="connexion">
             <Form onSubmit={handler}>
-                <FormItem label="Email" value={email} onChange={(e) => setEmail(e.target.value)} controlId='password' type='email' />
+                <FormItem label="Email" value={email} onChange={(e) => setEmail(e.target.value)} controlId='email' type='email' />
                 <FormItem label="Mot de passe" value={password} onChange={(e) => setPassword(e.target.value)} controlId='password' type='password' />
                 <Button className="button" type="submit" disabled={!validate()}> Connexion </Button>
             </Form>
